@@ -13,41 +13,41 @@ function preload() {
   nine_img = loadImage("9.png");
 }
 function setup() {
-  createCanvas(1300, 600);
+  createCanvas(1900, 600);
   january = createSprite(100, 220, 20, 220);
   january.addImage("one_img", one_img);
   january.scale = 0.35;
-  february = createSprite(200, 220, 20, 220);
+  february = createSprite(250, 220, 20, 220);
   february.addImage("one_img", one_img);
   february.scale = 0.35;
-  march = createSprite(300, 220, 20, 220);
+  march = createSprite(400, 220, 20, 220);
   march.addImage("one_img", one_img);
   march.scale = 0.35;
-  april = createSprite(400, 220, 20, 220);
+  april = createSprite(550, 220, 20, 220);
   april.addImage("one_img", one_img);
   april.scale = 0.35;
-  may = createSprite(500, 220, 20, 220);
+  may = createSprite(700, 220, 20, 220);
   may.addImage("one_img", one_img);
   may.scale = 0.35;
-  june = createSprite(600, 220, 20, 220);
+  june = createSprite(850, 220, 20, 220);
   june.addImage("one_img", one_img);
   june.scale = 0.35;
-  july = createSprite(700, 220, 20, 220);
+  july = createSprite(1000, 220, 20, 220);
   july.addImage("one_img", one_img);
   july.scale = 0.35;
-  august = createSprite(800, 220, 20, 220);
+  august = createSprite(1150, 220, 20, 220);
   august.addImage("one_img", one_img);
   august.scale = 0.35;
-  september = createSprite(900, 220, 20, 220);
+  september = createSprite(1300, 220, 20, 220);
   september.addImage("one_img", one_img);
   september.scale = 0.35;
-  october = createSprite(1000, 220, 20, 220);
+  october = createSprite(1450, 220, 20, 220);
   october.addImage("one_img", one_img);
   october.scale = 0.35;
-  november = createSprite(1100, 220, 20, 220);
+  november = createSprite(1600, 220, 20, 220);
   november.addImage("one_img", one_img);
   november.scale = 0.35;
-  december = createSprite(1200, 220, 20, 220);
+  december = createSprite(1750, 220, 20, 220);
   december.addImage("one_img", one_img);
   december.scale = 0.35;
 
@@ -60,8 +60,10 @@ function setup() {
   remove.position(600, 500);
   check = createButton("CHECK");
   check.position(950, 500);
+  half = createButton("HALF");
+  half.position(1250, 500);
 
-  water = [75, 30, 10, 50, 60, 70, 30, 40, 90, 20, 30, 40];
+  water = [30, 30, 10, 50, 50, 70, 70, 40, 40, 20, 30, 40];
   month = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12];
 }
 function draw() {
@@ -73,18 +75,39 @@ function draw() {
   amount = remove.value();
   textSize(20);
   fill("black");
-  text(
-    "January     Febuary     March       April        May       June        July       August   September  October  November  December",
-    50,
-    400
-  );
+  text("January - 1", 80, 400);
+  text("February - 2", 220, 400);
+  text("March - 3", 380, 400);
+  text("April - 4", 540, 400);
+  text("May - 5", 700, 400);
+  text("June - 6", 840, 400);
+  text("July - 7", 990, 400);
+  text("August - 8", 1130, 400);
+  text("September - 9", 1260, 400);
+  text("October - 10", 1420, 400);
+  text("November - 11", 1560, 400);
+  text("December - 12", 1700, 400);
+
   // console.log(month1, month2, amount);
 
   animate();
 
   check.mousePressed(move);
+  half.mousePressed(half_move);
+}
+function half_move() {
+  month1 = int(month1);
+  month2 = int(month2);
+  month12 = int(month1) - 1;
+  month22 = int(month2) - 1;
+  total = water[month12] + water[month22];
+  water[month12] = total / 2;
+  water[month22] = total / 2;
+  console.log(month1, month2, month12, month22);
 }
 function animate() {
+  month1 = int(month1);
+  month2 = int(month2);
   if (water[0] >= 0 && water[0] < 10) {
     january.addImage("one_img", one_img);
     january.changeImage("one_img", one_img);
@@ -459,518 +482,520 @@ function animate() {
   }
 }
 function move() {
+  month1 = int(month1);
+  month2 = int(month2);
   switch (month1) {
-    case "january":
+    case 1:
       water[0] = water[0] - int(amount);
-
+      console.log(month1);
       switch (month2) {
-        case "january":
+        case 1:
           water[0] = water[0] + int(amount);
           break;
-        case "february":
+        case 2:
           water[1] = water[1] + int(amount);
           break;
-        case "march":
+        case 3:
           water[2] = water[2] + int(amount);
           break;
-        case "april":
+        case 4:
           water[3] = water[3] + int(amount);
           break;
-        case "may":
+        case 5:
           water[4] = water[4] + int(amount);
           break;
-        case "june":
+        case 6:
           water[5] = water[5] + int(amount);
           break;
-        case "july":
+        case 7:
           water[6] = water[6] + int(amount);
           break;
-        case "august":
+        case 8:
           water[7] = water[7] + int(amount);
           break;
-        case "september":
+        case 9:
           water[8] = water[8] + int(amount);
           break;
-        case "october":
+        case 10:
           water[9] = water[9] + int(amount);
           break;
-        case "november":
+        case 11:
           water[10] = water[10] + int(amount);
           break;
-        case "december":
+        case 12:
           water[11] = water[11] + int(amount);
           break;
         default:
           break;
       }
       break;
-    case "february":
+    case 2:
       water[1] = water[1] - int(amount);
       switch (month2) {
-        case "january":
+        case 1:
           water[0] = water[0] + int(amount);
           break;
-        case "february":
+        case 2:
           water[1] = water[1] + int(amount);
           break;
-        case "march":
+        case 3:
           water[2] = water[2] + int(amount);
           break;
-        case "april":
+        case 4:
           water[3] = water[3] + int(amount);
           break;
-        case "may":
+        case 5:
           water[4] = water[4] + int(amount);
           break;
-        case "june":
+        case 6:
           water[5] = water[5] + int(amount);
           break;
-        case "july":
+        case 7:
           water[6] = water[6] + int(amount);
           break;
-        case "august":
+        case 8:
           water[7] = water[7] + int(amount);
           break;
-        case "september":
+        case 9:
           water[8] = water[8] + int(amount);
           break;
-        case "october":
+        case 10:
           water[9] = water[9] + int(amount);
           break;
-        case "november":
+        case 11:
           water[10] = water[10] + int(amount);
           break;
-        case "december":
+        case 12:
           water[11] = water[11] + int(amount);
           break;
         default:
           break;
       }
       break;
-    case "march":
+    case 3:
       water[2] = water[2] - int(amount);
       switch (month2) {
-        case "january":
+        case 1:
           water[0] = water[0] + int(amount);
           break;
-        case "february":
+        case 2:
           water[1] = water[1] + int(amount);
           break;
-        case "march":
+        case 3:
           water[2] = water[2] + int(amount);
           break;
-        case "april":
+        case 4:
           water[3] = water[3] + int(amount);
           break;
-        case "may":
+        case 5:
           water[4] = water[4] + int(amount);
           break;
-        case "june":
+        case 6:
           water[5] = water[5] + int(amount);
           break;
-        case "july":
+        case 7:
           water[6] = water[6] + int(amount);
           break;
-        case "august":
+        case 8:
           water[7] = water[7] + int(amount);
           break;
-        case "september":
+        case 9:
           water[8] = water[8] + int(amount);
           break;
-        case "october":
+        case 10:
           water[9] = water[9] + int(amount);
           break;
-        case "november":
+        case 11:
           water[10] = water[10] + int(amount);
           break;
-        case "december":
+        case 12:
           water[11] = water[11] + int(amount);
           break;
         default:
           break;
       }
       break;
-    case "april":
+    case 4:
       water[3] = water[3] - int(amount);
       switch (month2) {
-        case "january":
+        case 1:
           water[0] = water[0] + int(amount);
           break;
-        case "february":
+        case 2:
           water[1] = water[1] + int(amount);
           break;
-        case "march":
+        case 3:
           water[2] = water[2] + int(amount);
           break;
-        case "april":
+        case 4:
           water[3] = water[3] + int(amount);
           break;
-        case "may":
+        case 5:
           water[4] = water[4] + int(amount);
           break;
-        case "june":
+        case 6:
           water[5] = water[5] + int(amount);
           break;
-        case "july":
+        case 7:
           water[6] = water[6] + int(amount);
           break;
-        case "august":
+        case 8:
           water[7] = water[7] + int(amount);
           break;
-        case "september":
+        case 9:
           water[8] = water[8] + int(amount);
           break;
-        case "october":
+        case 10:
           water[9] = water[9] + int(amount);
           break;
-        case "november":
+        case 11:
           water[10] = water[10] + int(amount);
           break;
-        case "december":
+        case 12:
           water[11] = water[11] + int(amount);
           break;
         default:
           break;
       }
       break;
-    case "may":
+    case 5:
       water[4] = water[4] - int(amount);
       switch (month2) {
-        case "january":
+        case 1:
           water[0] = water[0] + int(amount);
           break;
-        case "february":
+        case 2:
           water[1] = water[1] + int(amount);
           break;
-        case "march":
+        case 3:
           water[2] = water[2] + int(amount);
           break;
-        case "april":
+        case 4:
           water[3] = water[3] + int(amount);
           break;
-        case "may":
+        case 5:
           water[4] = water[4] + int(amount);
           break;
-        case "june":
+        case 6:
           water[5] = water[5] + int(amount);
           break;
-        case "july":
+        case 7:
           water[6] = water[6] + int(amount);
           break;
-        case "august":
+        case 8:
           water[7] = water[7] + int(amount);
           break;
-        case "september":
+        case 9:
           water[8] = water[8] + int(amount);
           break;
-        case "october":
+        case 10:
           water[9] = water[9] + int(amount);
           break;
-        case "november":
+        case 11:
           water[10] = water[10] + int(amount);
           break;
-        case "december":
+        case 12:
           water[11] = water[11] + int(amount);
           break;
         default:
           break;
       }
       break;
-    case "june":
+    case 6:
       water[5] = water[5] - int(amount);
       switch (month2) {
-        case "january":
+        case 1:
           water[0] = water[0] + int(amount);
           break;
-        case "february":
+        case 2:
           water[1] = water[1] + int(amount);
           break;
-        case "march":
+        case 3:
           water[2] = water[2] + int(amount);
           break;
-        case "april":
+        case 4:
           water[3] = water[3] + int(amount);
           break;
-        case "may":
+        case 5:
           water[4] = water[4] + int(amount);
           break;
-        case "june":
+        case 6:
           water[5] = water[5] + int(amount);
           break;
-        case "july":
+        case 7:
           water[6] = water[6] + int(amount);
           break;
-        case "august":
+        case 8:
           water[7] = water[7] + int(amount);
           break;
-        case "september":
+        case 9:
           water[8] = water[8] + int(amount);
           break;
-        case "october":
+        case 10:
           water[9] = water[9] + int(amount);
           break;
-        case "november":
+        case 11:
           water[10] = water[10] + int(amount);
           break;
-        case "december":
+        case 12:
           water[11] = water[11] + int(amount);
           break;
         default:
           break;
       }
       break;
-    case "july":
+    case 7:
       water[6] = water[6] - int(amount);
       switch (month2) {
-        case "january":
+        case 1:
           water[0] = water[0] + int(amount);
           break;
-        case "february":
+        case 2:
           water[1] = water[1] + int(amount);
           break;
-        case "march":
+        case 3:
           water[2] = water[2] + int(amount);
           break;
-        case "april":
+        case 4:
           water[3] = water[3] + int(amount);
           break;
-        case "may":
+        case 5:
           water[4] = water[4] + int(amount);
           break;
-        case "june":
+        case 6:
           water[5] = water[5] + int(amount);
           break;
-        case "july":
+        case 7:
           water[6] = water[6] + int(amount);
           break;
-        case "august":
+        case 8:
           water[7] = water[7] + int(amount);
           break;
-        case "september":
+        case 9:
           water[8] = water[8] + int(amount);
           break;
-        case "october":
+        case 10:
           water[9] = water[9] + int(amount);
           break;
-        case "november":
+        case 11:
           water[10] = water[10] + int(amount);
           break;
-        case "december":
+        case 12:
           water[11] = water[11] + int(amount);
           break;
         default:
           break;
       }
       break;
-    case "august":
+    case 8:
       water[7] = water[7] - int(amount);
       switch (month2) {
-        case "january":
+        case 1:
           water[0] = water[0] + int(amount);
           break;
-        case "february":
+        case 2:
           water[1] = water[1] + int(amount);
           break;
-        case "march":
+        case 3:
           water[2] = water[2] + int(amount);
           break;
-        case "april":
+        case 4:
           water[3] = water[3] + int(amount);
           break;
-        case "may":
+        case 5:
           water[4] = water[4] + int(amount);
           break;
-        case "june":
+        case 6:
           water[5] = water[5] + int(amount);
           break;
-        case "july":
+        case 7:
           water[6] = water[6] + int(amount);
           break;
-        case "august":
+        case 8:
           water[7] = water[7] + int(amount);
           break;
-        case "september":
+        case 9:
           water[8] = water[8] + int(amount);
           break;
-        case "october":
+        case 10:
           water[9] = water[9] + int(amount);
           break;
-        case "november":
+        case 11:
           water[10] = water[10] + int(amount);
           break;
-        case "december":
+        case 12:
           water[11] = water[11] + int(amount);
           break;
         default:
           break;
       }
       break;
-    case "september":
+    case 9:
       water[8] = water[8] - int(amount);
       switch (month2) {
-        case "january":
+        case 1:
           water[0] = water[0] + int(amount);
           break;
-        case "february":
+        case 2:
           water[1] = water[1] + int(amount);
           break;
-        case "march":
+        case 3:
           water[2] = water[2] + int(amount);
           break;
-        case "april":
+        case 4:
           water[3] = water[3] + int(amount);
           break;
-        case "may":
+        case 5:
           water[4] = water[4] + int(amount);
           break;
-        case "june":
+        case 6:
           water[5] = water[5] + int(amount);
           break;
-        case "july":
+        case 7:
           water[6] = water[6] + int(amount);
           break;
-        case "august":
+        case 8:
           water[7] = water[7] + int(amount);
           break;
-        case "september":
+        case 9:
           water[8] = water[8] + int(amount);
           break;
-        case "october":
+        case 10:
           water[9] = water[9] + int(amount);
           break;
-        case "november":
+        case 11:
           water[10] = water[10] + int(amount);
           break;
-        case "december":
+        case 12:
           water[11] = water[11] + int(amount);
           break;
         default:
           break;
       }
       break;
-    case "october":
+    case 10:
       water[9] = water[9] - int(amount);
       switch (month2) {
-        case "january":
+        case 1:
           water[0] = water[0] + int(amount);
           break;
-        case "february":
+        case 2:
           water[1] = water[1] + int(amount);
           break;
-        case "march":
+        case 3:
           water[2] = water[2] + int(amount);
           break;
-        case "april":
+        case 4:
           water[3] = water[3] + int(amount);
           break;
-        case "may":
+        case 5:
           water[4] = water[4] + int(amount);
           break;
-        case "june":
+        case 6:
           water[5] = water[5] + int(amount);
           break;
-        case "july":
+        case 7:
           water[6] = water[6] + int(amount);
           break;
-        case "august":
+        case 8:
           water[7] = water[7] + int(amount);
           break;
-        case "september":
+        case 9:
           water[8] = water[8] + int(amount);
           break;
-        case "october":
+        case 10:
           water[9] = water[9] + int(amount);
           break;
-        case "november":
+        case 11:
           water[10] = water[10] + int(amount);
           break;
-        case "december":
+        case 12:
           water[11] = water[11] + int(amount);
           break;
         default:
           break;
       }
       break;
-    case "november":
+    case 11:
       water[10] = water[10] - int(amount);
       switch (month2) {
-        case "january":
+        case 1:
           water[0] = water[0] + int(amount);
           break;
-        case "february":
+        case 2:
           water[1] = water[1] + int(amount);
           break;
-        case "march":
+        case 3:
           water[2] = water[2] + int(amount);
           break;
-        case "april":
+        case 4:
           water[3] = water[3] + int(amount);
           break;
-        case "may":
+        case 5:
           water[4] = water[4] + int(amount);
           break;
-        case "june":
+        case 6:
           water[5] = water[5] + int(amount);
           break;
-        case "july":
+        case 7:
           water[6] = water[6] + int(amount);
           break;
-        case "august":
+        case 8:
           water[7] = water[7] + int(amount);
           break;
-        case "september":
+        case 9:
           water[8] = water[8] + int(amount);
           break;
-        case "october":
+        case 10:
           water[9] = water[9] + int(amount);
           break;
-        case "november":
+        case 11:
           water[10] = water[10] + int(amount);
           break;
-        case "december":
+        case 12:
           water[11] = water[11] + int(amount);
           break;
         default:
           break;
       }
       break;
-    case "december":
+    case 12:
       water[11] = water[11] - int(amount);
       switch (month2) {
-        case "january":
+        case 1:
           water[0] = water[0] + int(amount);
           break;
-        case "february":
+        case 2:
           water[1] = water[1] + int(amount);
           break;
-        case "march":
+        case 3:
           water[2] = water[2] + int(amount);
           break;
-        case "april":
+        case 4:
           water[3] = water[3] + int(amount);
           break;
-        case "may":
+        case 5:
           water[4] = water[4] + int(amount);
           break;
-        case "june":
+        case 6:
           water[5] = water[5] + int(amount);
           break;
-        case "july":
+        case 7:
           water[6] = water[6] + int(amount);
           break;
-        case "august":
+        case 8:
           water[7] = water[7] + int(amount);
           break;
-        case "september":
+        case 9:
           water[8] = water[8] + int(amount);
           break;
-        case "october":
+        case 10:
           water[9] = water[9] + int(amount);
           break;
-        case "november":
+        case 11:
           water[10] = water[10] + int(amount);
           break;
-        case "december":
+        case 12:
           water[11] = water[11] + int(amount);
           break;
         default:
