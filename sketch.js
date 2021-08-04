@@ -2,6 +2,7 @@ var jan, feb;
 var water = [];
 var month = [];
 function preload() {
+  zero_img = loadImage("0.png");
   one_img = loadImage("1.png");
   two_img = loadImage("2.png");
   three_img = loadImage("3.png");
@@ -63,7 +64,7 @@ function setup() {
   half = createButton("HALF");
   half.position(1250, 500);
 
-  water = [30, 30, 10, 50, 50, 70, 70, 40, 40, 20, 30, 40];
+  water = [0, 30, 10, 50, 50, 70, 70, 40, 40, 20, 30, 90];
   month = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12];
 }
 function draw() {
@@ -100,15 +101,23 @@ function half_move() {
   month2 = int(month2);
   month12 = int(month1) - 1;
   month22 = int(month2) - 1;
-  total = water[month12] + water[month22];
-  water[month12] = total / 2;
-  water[month22] = total / 2;
-  console.log(month1, month2, month12, month22);
+  half2 = water[month12] / 2;
+  total = water[month22] + half2;
+  total2 = water[month12] - half2;
+  water[month22] = total;
+  water[month12] = total2;
+  // total = water[month12] + water[month22];
+  // water[month12] = total / 2;
+  // water[month22] = total / 2;
+  console.log(total2, total);
 }
 function animate() {
   month1 = int(month1);
   month2 = int(month2);
-  if (water[0] >= 0 && water[0] < 10) {
+  if (water[0] <= 0) {
+    january.addImage("zero_img", zero_img);
+    january.changeImage("zero_img", zero_img);
+  } else if (water[0] > 0 && water[0] < 10) {
     january.addImage("one_img", one_img);
     january.changeImage("one_img", one_img);
   } else if (water[0] >= 10 && water[0] < 20) {
@@ -139,7 +148,10 @@ function animate() {
     january.addImage("nine_img", nine_img);
     january.changeImage("nine_img", nine_img);
   }
-  if (water[1] >= 0 && water[1] < 10) {
+  if (water[1] <= 0) {
+    february.addImage("zero_img", zero_img);
+    february.changeImage("zero_img", zero_img);
+  } else if (water[1] > 0 && water[1] < 10) {
     february.addImage("one_img", one_img);
     february.changeImage("one_img", one_img);
   } else if (water[1] >= 10 && water[1] < 20) {
@@ -170,7 +182,10 @@ function animate() {
     february.addImage("nine_img", nine_img);
     february.changeImage("nine_img", nine_img);
   }
-  if (water[2] >= 0 && water[2] < 10) {
+  if (water[2] <= 0) {
+    march.addImage("zero_img", zero_img);
+    march.changeImage("zero_img", zero_img);
+  } else if (water[2] > 0 && water[2] < 10) {
     march.addImage("one_img", one_img);
     march.changeImage("one_img", one_img);
   } else if (water[2] >= 10 && water[2] < 20) {
@@ -201,7 +216,10 @@ function animate() {
     march.addImage("nine_img", nine_img);
     march.changeImage("nine_img", nine_img);
   }
-  if (water[3] >= 0 && water[3] < 10) {
+  if (water[3] <= 0) {
+    april.addImage("zero_img", zero_img);
+    april.changeImage("zero_img", zero_img);
+  } else if (water[3] > 0 && water[3] < 10) {
     april.addImage("one_img", one_img);
     april.changeImage("one_img", one_img);
   } else if (water[3] >= 10 && water[3] < 20) {
@@ -232,7 +250,10 @@ function animate() {
     april.addImage("nine_img", nine_img);
     april.changeImage("nine_img", nine_img);
   }
-  if (water[4] >= 0 && water[4] < 10) {
+  if (water[4] <= 0) {
+    may.addImage("zero_img", zero_img);
+    may.changeImage("zero_img", zero_img);
+  } else if (water[4] > 0 && water[4] < 10) {
     may.addImage("one_img", one_img);
     may.changeImage("one_img", one_img);
   } else if (water[4] >= 10 && water[4] < 20) {
@@ -263,7 +284,10 @@ function animate() {
     may.addImage("nine_img", nine_img);
     may.changeImage("nine_img", nine_img);
   }
-  if (water[5] >= 0 && water[5] < 10) {
+  if (water[5] <= 0) {
+    june.addImage("zero_img", zero_img);
+    june.changeImage("zero_img", zero_img);
+  } else if (water[5] > 0 && water[5] < 10) {
     june.addImage("one_img", one_img);
     june.changeImage("one_img", one_img);
   } else if (water[5] >= 10 && water[5] < 20) {
@@ -294,7 +318,10 @@ function animate() {
     june.addImage("nine_img", nine_img);
     june.changeImage("nine_img", nine_img);
   }
-  if (water[6] >= 0 && water[6] < 10) {
+  if (water[6] <= 0) {
+    july.addImage("zero_img", zero_img);
+    july.changeImage("zero_img", zero_img);
+  } else if (water[6] > 0 && water[6] < 10) {
     july.addImage("one_img", one_img);
     july.changeImage("one_img", one_img);
   } else if (water[6] >= 10 && water[6] < 20) {
@@ -325,7 +352,10 @@ function animate() {
     july.addImage("nine_img", nine_img);
     july.changeImage("nine_img", nine_img);
   }
-  if (water[7] >= 0 && water[7] < 10) {
+  if (water[7] <= 0) {
+    august.addImage("zero_img", zero_img);
+    august.changeImage("zero_img", zero_img);
+  } else if (water[7] > 0 && water[7] < 10) {
     august.addImage("one_img", one_img);
     august.changeImage("one_img", one_img);
   } else if (water[7] >= 10 && water[7] < 20) {
@@ -356,7 +386,10 @@ function animate() {
     august.addImage("nine_img", nine_img);
     august.changeImage("nine_img", nine_img);
   }
-  if (water[8] >= 0 && water[8] < 10) {
+  if (water[8] <= 0) {
+    september.addImage("zero_img", zero_img);
+    september.changeImage("zero_img", zero_img);
+  } else if (water[8] > 0 && water[8] < 10) {
     september.addImage("one_img", one_img);
     september.changeImage("one_img", one_img);
   } else if (water[8] >= 10 && water[8] < 20) {
@@ -387,7 +420,10 @@ function animate() {
     september.addImage("nine_img", nine_img);
     september.changeImage("nine_img", nine_img);
   }
-  if (water[9] >= 0 && water[9] < 10) {
+  if (water[9] <= 0) {
+    october.addImage("zero_img", zero_img);
+    october.changeImage("zero_img", zero_img);
+  } else if (water[9] > 0 && water[9] < 10) {
     october.addImage("one_img", one_img);
     october.changeImage("one_img", one_img);
   } else if (water[9] >= 10 && water[9] < 20) {
@@ -418,7 +454,10 @@ function animate() {
     october.addImage("nine_img", nine_img);
     october.changeImage("nine_img", nine_img);
   }
-  if (water[10] >= 0 && water[10] < 10) {
+  if (water[10] <= 0) {
+    november.addImage("zero_img", zero_img);
+    november.changeImage("zero_img", zero_img);
+  } else if (water[10] > 0 && water[10] < 10) {
     november.addImage("one_img", one_img);
     november.changeImage("one_img", one_img);
   } else if (water[10] >= 10 && water[10] < 20) {
@@ -449,7 +488,10 @@ function animate() {
     november.addImage("nine_img", nine_img);
     november.changeImage("nine_img", nine_img);
   }
-  if (water[11] >= 0 && water[11] < 10) {
+  if (water[11] <= 0) {
+    december.addImage("zero_img", zero_img);
+    december.changeImage("zero_img", zero_img);
+  } else if (water[11] > 0 && water[11] < 10) {
     december.addImage("one_img", one_img);
     december.changeImage("one_img", one_img);
   } else if (water[11] >= 10 && water[11] < 20) {
