@@ -59,10 +59,12 @@ function setup() {
 
   remove = createInput();
   remove.position(600, 500);
-  check = createButton("CHECK");
+  check = createButton("TRANSFER");
   check.position(950, 500);
   half = createButton("HALF");
   half.position(1250, 500);
+  empty = createButton("EMPTY");
+  empty.position(1500, 500);
 
   water = [0, 30, 10, 50, 50, 70, 70, 40, 40, 20, 30, 90];
   month = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12];
@@ -95,6 +97,18 @@ function draw() {
 
   check.mousePressed(move);
   half.mousePressed(half_move);
+  empty.mousePressed(empty_move);
+}
+function empty_move() {
+  month1 = int(month1);
+  month2 = int(month2);
+  month12 = int(month1) - 1;
+  month22 = int(month2) - 1;
+  half2 = water[month12];
+  total = water[month22] + half2;
+  total2 = water[month12] - half2;
+  water[month22] = total;
+  water[month12] = total2;
 }
 function half_move() {
   month1 = int(month1);
